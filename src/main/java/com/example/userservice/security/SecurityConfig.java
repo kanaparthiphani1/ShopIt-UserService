@@ -89,7 +89,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.disable())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/users/signup").permitAll()
+                        .requestMatchers("/users/**").permitAll()
+
                         .anyRequest().authenticated()
                 )
                 // Form login handles the redirect to the login page from the

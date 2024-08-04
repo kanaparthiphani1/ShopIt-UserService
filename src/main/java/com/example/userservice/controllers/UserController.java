@@ -7,6 +7,8 @@ import com.example.userservice.repository.UserRepository;
 import com.example.userservice.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/users")
 public class UserController {
@@ -21,7 +23,7 @@ public class UserController {
 
     @PostMapping("/signup")
     public UserDto signup(@RequestBody SignUpRequestDto requestDto){
-        User user = this.userService.signUp(requestDto.getEmail(), requestDto.getName(), requestDto.getPassword(), requestDto.getRoles());
+        User user = this.userService.signUp(requestDto.getEmail(), requestDto.getName(), requestDto.getPassword(), List.of("USER"));
         return UserDto.from(user);
     }
 
